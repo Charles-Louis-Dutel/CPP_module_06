@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 17:05:11 by cdutel            #+#    #+#             */
-/*   Updated: 2025/01/22 14:27:23 by cdutel           ###   ########.fr       */
+/*   Updated: 2025/01/22 15:05:10 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,27 @@ static int	check_validity(std::string to_convert)
 	return (0);
 }
 
+static void	printChar(char c, int impossible)
+{
+	if (impossible == 1)
+	{
+		std::cout << "char: impossible" << std::endl;
+		return;
+	}
+	if ((c >= 0 && c < 32) || c == 127)
+		std::cout << "char: Non displayable" << std::endl;
+	else if (c >= 32 && c <= 126)
+		std::cout << "char: '" << c << "'" << std::endl;
+	else
+		std::cout << "char: impossible" << std::endl;
+}
+
 static void	convertFromChar(std::string const to_convert)
 {
 	char	c;
 
 	c = to_convert[0];
-	std::cout << "char: " << c << std::endl;
+	printChar(c, 0);
 	std::cout << "int: " << static_cast<int>(c) << std::endl;
 	std::cout << "float: " << static_cast<float>(c) << std::endl;
 	std::cout << "double: " << static_cast<double>(c) << std::endl;
@@ -85,7 +100,10 @@ static void	convertFromInt(std::string const to_convert)
 	int					i;
 
 	iss >> i;
-	std::cout << "char:" << static_cast<char>(i) << std::endl;
+	if (i >= 0 && i <= 127)
+		printChar(static_cast<char>(i), 0);
+	else
+		printChar(static_cast<char>(i), 1);
 	if (iss.fail())
 		std::cout << "int: impossible" << std::endl;
 	else
@@ -106,7 +124,7 @@ static void	convertFromFloat(std::string const to_convert)
 	float				f;
 
 	iss >> f;
-	std::cout << "char:" << static_cast<char>(f) << std::endl;
+	printChar(static_cast<char>(f), 0);
 	std::cout << "int:" << static_cast<int>(f) << std::endl;
 	if (iss.fail())
 		std::cout << "float: impossible" << std::endl;
