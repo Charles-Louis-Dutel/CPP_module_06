@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 17:05:11 by cdutel            #+#    #+#             */
-/*   Updated: 2025/01/22 13:39:23 by cdutel           ###   ########.fr       */
+/*   Updated: 2025/01/22 14:27:23 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,28 @@ static int	check_validity(std::string to_convert)
 
 static void	convertFromChar(std::string const to_convert)
 {
-	(void)to_convert;
-	std::cout << "char" << std::endl;
+	char	c;
+
+	c = to_convert[0];
+	std::cout << "char: " << c << std::endl;
+	std::cout << "int: " << static_cast<int>(c) << std::endl;
+	std::cout << "float: " << static_cast<float>(c) << std::endl;
+	std::cout << "double: " << static_cast<double>(c) << std::endl;
 }
 
 static void	convertFromInt(std::string const to_convert)
 {
-	(void)to_convert;
-	std::cout << "int" << std::endl;
+	std::istringstream	iss(to_convert);
+	int					i;
+
+	iss >> i;
+	std::cout << "char:" << static_cast<char>(i) << std::endl;
+	if (iss.fail())
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << i << std::endl;
+	std::cout << "float:" << static_cast<float>(i) << std::endl;
+	std::cout << "double:" << static_cast<double>(i) << std::endl;
 }
 
 static void	convertFromDouble(std::string const to_convert)
@@ -88,8 +102,17 @@ static void	convertFromDouble(std::string const to_convert)
 
 static void	convertFromFloat(std::string const to_convert)
 {
-	(void)to_convert;
-	std::cout << "float" << std::endl;
+	std::istringstream	iss(to_convert);
+	float				f;
+
+	iss >> f;
+	std::cout << "char:" << static_cast<char>(f) << std::endl;
+	std::cout << "int:" << static_cast<int>(f) << std::endl;
+	if (iss.fail())
+		std::cout << "float: impossible" << std::endl;
+	else
+		std::cout << "float: " << f << std::endl;
+	std::cout << "double:" << static_cast<double>(f) << std::endl;
 }
 
 static std::string	find_type(std::string const to_convert)
