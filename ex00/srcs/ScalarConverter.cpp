@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 17:05:11 by cdutel            #+#    #+#             */
-/*   Updated: 2025/01/22 12:44:37 by cdutel           ###   ########.fr       */
+/*   Updated: 2025/01/22 13:13:30 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ static int	check_validity(std::string to_convert)
 		return (1);
 	while (to_convert[i])
 	{
+		if (to_convert[i] == '+' || to_convert[i] == '-')
+			return (1);
 		if (to_convert[i] == '.')
 		{
 			dot++;
@@ -76,7 +78,7 @@ static std::string	find_type(std::string const to_convert)
 		return ("NAN_OR_INF");
 	else if (to_convert.length() == 1 && !isdigit(to_convert[0]))
 		return ("CHAR");
-	else if (to_convert.find_first_not_of("+-0123456789") > to_convert.length())
+	else if (to_convert.find_first_not_of("+-0123456789") > to_convert.length() && check_validity(to_convert) == 0)
 		return ("INT");
 	else if (to_convert.find_first_not_of("+-0123456789.") > to_convert.length() && check_validity(to_convert) == 0)
 		return ("DOUBLE");
