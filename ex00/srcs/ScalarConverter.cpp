@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 17:05:11 by cdutel            #+#    #+#             */
-/*   Updated: 2025/01/22 13:13:30 by cdutel           ###   ########.fr       */
+/*   Updated: 2025/01/22 13:39:23 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,30 @@ static int	check_validity(std::string to_convert)
 	return (0);
 }
 
+static void	convertFromChar(std::string const to_convert)
+{
+	(void)to_convert;
+	std::cout << "char" << std::endl;
+}
+
+static void	convertFromInt(std::string const to_convert)
+{
+	(void)to_convert;
+	std::cout << "int" << std::endl;
+}
+
+static void	convertFromDouble(std::string const to_convert)
+{
+	(void)to_convert;
+	std::cout << "double" << std::endl;
+}
+
+static void	convertFromFloat(std::string const to_convert)
+{
+	(void)to_convert;
+	std::cout << "float" << std::endl;
+}
+
 static std::string	find_type(std::string const to_convert)
 {
 	if (to_convert[0] == '\0')
@@ -91,7 +115,32 @@ static std::string	find_type(std::string const to_convert)
 void	ScalarConverter::convert(std::string const to_convert)
 {
 	std::string	type_of_string;
+	std::string	type[4] = {"CHAR", "INT", "DOUBLE", "FLOAT"};
+	int			i;
 
 	type_of_string = find_type(to_convert);
 	std::cout << type_of_string << std::endl;
+
+	for (i = 0; i < 4; i++)
+	{
+		if (type[i] == type_of_string)
+			break;
+	}
+	switch (i)
+	{
+		case 0:
+			convertFromChar(to_convert);
+			break;
+		case 1:
+			convertFromInt(to_convert);
+			break;
+		case 2:
+			convertFromDouble(to_convert);
+			break;
+		case 3:
+			convertFromFloat(to_convert);
+			break;
+		default:
+			std::cout << "error" << std::endl;
+	}
 }
