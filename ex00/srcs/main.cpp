@@ -6,12 +6,11 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:41:03 by cdutel            #+#    #+#             */
-/*   Updated: 2025/01/23 10:43:02 by cdutel           ###   ########.fr       */
+/*   Updated: 2025/01/23 15:01:30 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <sstream>
 #include "../includes/ScalarConverter.hpp"
 
 int main(int argc, char **argv)
