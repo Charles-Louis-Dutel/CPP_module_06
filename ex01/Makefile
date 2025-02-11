@@ -4,7 +4,7 @@ CFLAGS = -Wshadow -Wall -Wextra -Werror -g -std=c++98 -MMD
 
 ############################Sources########################
 SRCS_DIR = srcs/
-FILES = main ScalarConverter
+FILES = main Serializer
 
 
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .cpp, $(FILES)))

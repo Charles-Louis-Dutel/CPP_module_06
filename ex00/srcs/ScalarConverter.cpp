@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 17:05:11 by cdutel            #+#    #+#             */
-/*   Updated: 2025/01/23 14:49:11 by cdutel           ###   ########.fr       */
+/*   Updated: 2025/02/11 10:17:09 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,7 +214,6 @@ void	ScalarConverter::convert(std::string const to_convert)
 	int			i;
 
 	type_of_string = find_type(to_convert);
-	std::cout << type_of_string << std::endl;
 
 	for (i = 0; i < 5; i++)
 	{
